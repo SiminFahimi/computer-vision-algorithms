@@ -1,10 +1,11 @@
-import kernel_create as krn
+import common.kernel as krn
 import numpy as np
 
 def harris_corner_detection(image):
     g_mask=krn.Gaussian_kernel(2,(13,13))
-    horizental_mask=krn.Custom_kernel((1,2))
-    vertical_mask=krn.Custom_kernel((2,1))
+    horizental_mask = krn.Custom_kernel("sobel_x")
+    vertical_mask   = krn.Custom_kernel("sobel_y")
+
 
     x_gradiant=krn.add_filter(image,horizental_mask)
     y_gradiant=krn.add_filter(image,vertical_mask)

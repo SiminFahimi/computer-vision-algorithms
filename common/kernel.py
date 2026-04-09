@@ -39,16 +39,53 @@ class Gaussian_kernel(Kernel):
         return 
 
 class Custom_kernel(Kernel):
-    def __init__(self,shape):
+    def __init__(self, name):
+
+        self.name = name
+
+        if name == "simple_x":
+            shape = (1,2)
+
+        elif name == "simple_y":
+            shape = (2,1)
+
+        elif name in ["sobel_x", "sobel_y"]:
+            shape = (3,3)
+
+        else:
+            raise ValueError("Unknown kernel type")
+
         super().__init__(shape)
         self.return_kernel()
 
-
     def return_kernel(self):
-        center=self.center
-        self.kernel[center[0],center[1]]=-1
-        return
-    
+
+        # SIMPLE GRADIENT
+        if self.name == "simple_x":
+            self.kernel = np.array([[-1, 1]])
+
+        elif self.name == "simple_y":
+            self.kernel = np.array([
+                [-1],
+                [ 1]
+            ])
+
+        # SOBEL
+        elif self.name == "sobel_x":
+            self.kernel = np.array([
+                [-1,0,1],
+                [-2,0,2],
+                [-1,0,1]
+            ])
+
+        elif self.name == "sobel_y":
+            self.kernel = np.array([
+                [-1,-2,-1],
+                [0,0,0],
+                [1,2,1]
+            ])
+
+ 
 def add_filter(image,mask: Kernel):
     center_y,center_x=mask.center
     image_height,image_width=image.shape
