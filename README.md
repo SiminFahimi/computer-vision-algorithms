@@ -54,25 +54,24 @@ Simple sliding-window template matching with optional edge-weighted scoring.
 
 ## Project Structure
 computer-vision-algorithms/
-├── run.py                          
+├── run.py
 ├── common/
-│   └── kernel.py                   
+│ └── kernel.py
 ├── harris_corner/
-│   ├── harris.py
-│   └── demo.py
+│ ├── harris.py
+│ └── demo.py
 ├── canny_edge/
-│   ├── canny.py
-│   └── demo.py
+│ ├── canny.py
+│ └── demo.py
 ├── laplacian_pyramid/
-│   ├── laplacian_pyramid.py
-│   └── demo.py
+│ ├── laplacian_pyramid.py
+│ └── demo.py
 ├── character_detection/
-│   ├── detector.py
-│   └── demo.py
-├── data/                         
+│ ├── detector.py
+│ └── demo.py
+├── data/
 └── README.md
-text---
-
+---
 ## Requirements
 ```bash
 pip install numpy matplotlib opencv-python``
@@ -122,12 +121,12 @@ Here are some sample outputs from the implemented algorithms:
 
 | Original Image | Detected Corners |
 |----------------|------------------|
-| ![Original](results/square.jpg) | ![Harris](results/harris_result.png) |
+| ![Original](data/square.jpg) | ![Harris](results/harris_result.png) |
 
 ### Canny Edge Detection
 | Original Image | Detected Edges |
 |----------------|------------------|
-| ![Original](results/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
+| ![Original](data/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 
 
 ### Laplacian Pyramid
