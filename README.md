@@ -54,9 +54,9 @@ Simple sliding-window template matching with optional edge-weighted scoring.
 
 ## Project Structure
 computer-vision-algorithms/
-├── run.py                          # Main runner script
+├── run.py                          
 ├── common/
-│   └── kernel.py                   # Gaussian & Sobel kernels + convolution
+│   └── kernel.py                   
 ├── harris_corner/
 │   ├── harris.py
 │   └── demo.py
@@ -69,18 +69,17 @@ computer-vision-algorithms/
 ├── character_detection/
 │   ├── detector.py
 │   └── demo.py
-├── data/                           # Sample images (lena, square, test.png, characters, etc.)
+├── data/                         
 └── README.md
 text---
 
 ## Requirements
-
 ```bash
-pip install numpy matplotlib opencv-python
-
+pip install numpy matplotlib opencv-python``
+```
 How to Run
-Using the central runner:
-Bash# Harris Corner Detection
+Using the main runner:
+# Harris Corner Detection
 python run.py --method harris
 
 # Canny Edge Detection
@@ -91,8 +90,9 @@ python run.py --method pyramid
 
 # Character Detection
 python run.py --method detect
-Running individual demos:
-Bashpython -m harris_corner.demo
+
+Running individual modules:
+python -m harris_corner.demo
 python -m canny_edge.demo
 python -m laplacian_pyramid.demo
 python -m character_detection.demo
@@ -135,5 +135,3 @@ Here are some sample outputs from the implemented algorithms:
 
 ### Character Detection
 ![Object Detection Result](results/character_detection_result.png)
-
-> *All results are generated directly from the `run.py` script or individual demo files.*
