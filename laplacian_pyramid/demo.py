@@ -3,14 +3,14 @@ def run_pyramid():
     import matplotlib.pyplot as plt
     import numpy as np
     import cv2 as cv
-    import laplacian_pyramid
+    from . import laplacian_pyramid
 
     # --- Load image ---
-    image = cv.imread('lena_color.jpg', cv.IMREAD_GRAYSCALE)
+    image = cv.imread('data/lena_color.jpg', cv.IMREAD_GRAYSCALE)
     image = image.astype(np.float32) / 255.0
 
     # --- Build Laplacian Pyramid ---
-    d, u, l = laplacian_pyramid.laplasian_pyramid(image)
+    d, u, l = laplacian_pyramid.laplacian_pyramid(image)
 
     # --- Prepare canvases for visualization ---
     total_width = sum(img.shape[1] for img in d)

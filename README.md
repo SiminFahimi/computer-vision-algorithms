@@ -1,192 +1,139 @@
-:::writing
 # Computer Vision Algorithms (From Scratch)
 
-A collection of classic computer vision algorithms implemented **from scratch in Python**, focusing on understanding the mathematical foundations behind image processing and feature detection.
-
-This project includes implementations of edge detection, corner detection, image pyramids, and object detection using gradient-based descriptors.
+A collection of classic computer vision algorithms implemented **from scratch in Python** using only NumPy and basic OpenCV for image I/O and visualization. The main goal of this project is to deeply understand the mathematical foundations and implementation details of fundamental CV techniques.
 
 ---
 
 ## Implemented Algorithms
 
 ### 1. Harris Corner Detection
-Detects interest points (corners) in an image using the Harris response function.
+Detects interest points (corners) using the Harris response function.
 
-Features:
-- Gradient computation using Sobel filters
-- Structure tensor calculation
-- Corner response function
-- Non‑maximum suppression for final keypoints
+**Features:**
+- Sobel gradient computation
+- Gaussian smoothing of structure tensor components
+- Harris corner response calculation
+- Non-maximum suppression
 
-Output:
-- Image with detected corner points.
-
----
+**Module:** `harris_corner/`
 
 ### 2. Canny Edge Detection
-A multi-stage edge detector designed to produce clean and thin edges.
+A complete multi-stage edge detector.
 
-Pipeline:
+**Pipeline:**
 1. Gaussian smoothing
-2. Gradient computation (Sobel filters)
-3. Gradient magnitude and orientation
-4. Non‑maximum suppression
-5. Double threshold
-6. Edge tracking by hysteresis
+2. Gradient computation using Sobel filters
+3. Non-maximum suppression
+4. Double thresholding
+5. Edge tracking by hysteresis
 
-Output:
-- Binary edge map.
-
----
+**Module:** `canny_edge/`
 
 ### 3. Laplacian Pyramid
-Multi‑scale image representation useful for image blending and compression.
+Multi-scale image representation using Gaussian and Laplacian pyramids.
 
-Pipeline:
-1. Gaussian pyramid generation
-2. Laplacian pyramid construction
-3. Reconstruction from pyramid levels
+**Features:**
+- Gaussian pyramid construction
+- Laplacian pyramid computation
+- Image reconstruction from pyramid levels
+- Visualization of all pyramid levels
 
-Output:
-- Multi-scale representation of the input image.
+**Module:** `laplacian_pyramid/`
 
----
+### 4. Character/Object Detection (Template Matching)
+Simple sliding-window template matching with optional edge-weighted scoring.
 
-### 4. HOG‑Based Object Detection
-A simple object detection method based on **Histogram of Oriented Gradients (HOG)** descriptors and **cosine similarity**.
+**Features:**
+- Multi-scale detection support
+- Weighted Normalized Cross-Correlation (NCC) using Canny edge weights
+- Template combination from multiple samples
 
-Pipeline:
-1. Compute image gradients
-2. Build HOG descriptors for cells
-3. Block normalization
-4. Sliding window search
-5. Cosine similarity scoring with template descriptor
-6. Non‑maximum suppression for final detections
-
-Output:
-- Bounding boxes around detected objects.
+**Module:** `character_detection/`
 
 ---
 
 ## Project Structure
-
-```
 computer-vision-algorithms/
-│
-├── run.py
-│
+├── run.py                          # Main runner script
 ├── common/
-│   ├── __init__.py
-│   └── kernel.py
-│
+│   └── kernel.py                   # Gaussian & Sobel kernels + convolution
 ├── harris_corner/
 │   ├── harris.py
 │   └── demo.py
-│
 ├── canny_edge/
 │   ├── canny.py
 │   └── demo.py
-│
 ├── laplacian_pyramid/
-│   ├── pyramid.py
+│   ├── laplacian_pyramid.py
 │   └── demo.py
-│
-├── object_detection_hog/
-│   ├── gradients.py
-│   ├── hog_descriptor.py
-│   ├── similarity.py
+├── character_detection/
 │   ├── detector.py
 │   └── demo.py
-│
-├── data/
-│   └── sample_images
-│
-└── results/
-```
+├── data/                           # Sample images (lena, square, test.png, characters, etc.)
+└── README.md
+text---
 
----
+## Requirements
 
-## Installation
-
-Clone the repository:
-
-```
-git clone https://github.com/SiminFahimi/computer-vision-algorithms.git
-cd computer-vision-algorithms
-```
-
-Install required packages:
-
-```
+```bash
 pip install numpy matplotlib opencv-python
-```
 
----
-
-## Running the Algorithms
-
-A central script is provided to run each algorithm.
-
-Example:
-
-```
+How to Run
+Using the central runner:
+Bash# Harris Corner Detection
 python run.py --method harris
-```
 
-Available options:
-
-```
-python run.py --method harris
+# Canny Edge Detection
 python run.py --method canny
+
+# Laplacian Pyramid
 python run.py --method pyramid
-python run.py --method detection
-```
 
-Each module also contains a **demo script** that demonstrates the algorithm independently.
-
-Example:
-
-```
+# Character Detection
+python run.py --method detect
+Running individual demos:
+Bashpython -m harris_corner.demo
 python -m canny_edge.demo
-```
+python -m laplacian_pyramid.demo
+python -m character_detection.demo
 
----
+Goals of the Project
+
+Implement classical computer vision algorithms without relying on high-level OpenCV functions (e.g., no cv2.Canny() or cv2.cornerHarris())
+Build a solid understanding of the underlying mathematics
+Create modular and reusable code components
+Provide clear visualizations for each algorithm
+
+
+Future Improvements (Ideas)
+
+Add proper Non-Maximum Suppression + NMS for object detection
+Implement full HOG + SVM detector
+Add SIFT-like keypoint detection and descriptor
+Image stitching / panorama creation
+Optical flow
+Real-time webcam demonstrations
 
 ## Example Results
 
-Typical outputs include:
+Here are some sample outputs from the implemented algorithms:
 
-- Corner detection visualization
-- Binary edge maps
-- Multi‑scale pyramid levels
-- Object detection bounding boxes
+### Harris Corner Detection vs Original
 
-Example result images are stored in:
+| Original Image | Detected Corners |
+|----------------|------------------|
+| ![Original](results/square.jpg) | ![Harris](results/harris_result.png) |
 
-```
-results/
-```
+### Canny Edge Detection
+| Original Image | Detected Edges |
+|----------------|------------------|
+| ![Original](results/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 
----
 
-## Goals of the Project
+### Laplacian Pyramid
+![Laplacian Pyramid - Gaussian & Laplacian Levels](results/laplacian_pyramid.png)
 
-This repository focuses on:
+### Character Detection
+![Object Detection Result](results/character_detection_result.png)
 
-- Understanding classical computer vision methods
-- Implementing algorithms **without relying on high‑level libraries**
-- Learning the mathematical intuition behind feature detection
-- Building reusable computer vision modules
-
----
-
-## Future Improvements
-
-Possible extensions:
-
-- HOG + SVM detector
-- SIFT‑like keypoints
-- RANSAC for feature matching
-- Image stitching
-- Optical flow
-- Real‑time webcam demos
+> *All results are generated directly from the `run.py` script or individual demo files.*

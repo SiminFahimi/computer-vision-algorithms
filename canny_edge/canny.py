@@ -5,9 +5,6 @@ import common.kernel  as krn
 def canny_edge_detection(image):
     g_mask=krn.Gaussian_kernel(2,(13,13))
 
-    # horizental_mask =krn.Custom_kernel("simple_x")
-    # vertical_mask = krn.Custom_kernel("simple_y")
-
     horizental_mask = krn.Custom_kernel("sobel_x")
     vertical_mask   = krn.Custom_kernel("sobel_y")
 

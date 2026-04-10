@@ -3,7 +3,7 @@ import argparse
 from harris_corner.demo import run_harris
 from canny_edge.demo import run_canny
 from laplacian_pyramid.demo import run_pyramid
-from object_detection_hog.demo import run_detector
+from character_detection.demo import run_detector
 
 
 def main():

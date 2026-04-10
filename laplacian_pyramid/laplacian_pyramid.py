@@ -24,7 +24,7 @@ def laplacian_pyramid(image):
 
     gaussian = [None]*n
     laplacian = [None]*(n-1)
-    recon = [None]*n
+    reconstructed_pyramid = [None]*n
 
     gaussian[0] = image
 
@@ -46,12 +46,12 @@ def laplacian_pyramid(image):
         laplacian[i] = gaussian[i] - up
 
     # reconstruction
-    recon[n-1] = gaussian[n-1]
+    reconstructed_pyramid[n-1] = gaussian[n-1]
 
     for i in range(n-2, -1, -1):
-        up = up_sample(recon[i+1])
+        up = up_sample(reconstructed_pyramid[i+1])
         up = krl.add_filter(up, up_kernel)
         up = up[:laplacian[i].shape[0], :laplacian[i].shape[1]]
-        recon[i] = up + laplacian[i]
+        reconstructed_pyramid[i] = up + laplacian[i]
 
-    return gaussian, recon, laplacian
+    return gaussian, reconstructed_pyramid, laplacian
