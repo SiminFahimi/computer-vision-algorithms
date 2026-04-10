@@ -121,7 +121,7 @@ Here are some sample outputs from the implemented algorithms:
 
 | Original Image | Detected Corners |
 |----------------|------------------|
-| ![Original](data/square.jpg) | ![Harris](results/harris_result.png) |
+| ![Original](data/square.jpg) | ![Harris](results/harris_corner_detection.png) |
 
 ### Canny Edge Detection
 | Original Image | Detected Edges |
