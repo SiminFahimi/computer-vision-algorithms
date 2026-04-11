@@ -53,32 +53,37 @@ Simple sliding-window template matching with optional edge-weighted scoring.
 ---
 
 ## Project Structure
-computer-vision-algorithms/
-├── run.py
-├── common/
-│ └── kernel.py
-├── harris_corner/
-│ ├── harris.py
-│ └── demo.py
-├── canny_edge/
-│ ├── canny.py
-│ └── demo.py
-├── laplacian_pyramid/
-│ ├── laplacian_pyramid.py
-│ └── demo.py
-├── character_detection/
-│ ├── detector.py
-│ └── demo.py
-├── data/
-└── README.md
----
-## Requirements
-```bash
-pip install numpy matplotlib opencv-python``
 ```
-How to Run
-Using the main runner:
-# Harris Corner Detection
+computer-vision-algorithms/
+├── run.py                          # Main runner script
+├── common/
+│   └── kernel.py                   # Gaussian & Sobel kernels + convolution
+├── harris_corner/
+│   ├── harris.py
+│   └── demo.py
+├── canny_edge/
+│   ├── canny.py
+│   └── demo.py
+├── laplacian_pyramid/
+│   ├── laplacian_pyramid.py
+│   └── demo.py
+├── character_detection/
+│   ├── detector.py
+│   └── demo.py
+├── data/                           # Sample images (lena, square, test.png, characters, etc.)
+└── README.md
+```
+
+## Requirements
+
+```bash
+pip install numpy matplotlib opencv-python
+```
+
+
+## How to Run
+Using the central runner:
+Bash# Harris Corner Detection
 python run.py --method harris
 
 # Canny Edge Detection
@@ -89,12 +94,12 @@ python run.py --method pyramid
 
 # Character Detection
 python run.py --method detect
-
-Running individual modules:
-python -m harris_corner.demo
+Running individual demos:
+Bashpython -m harris_corner.demo
 python -m canny_edge.demo
 python -m laplacian_pyramid.demo
 python -m character_detection.demo
+
 
 Goals of the Project
 
@@ -102,7 +107,6 @@ Implement classical computer vision algorithms without relying on high-level Ope
 Build a solid understanding of the underlying mathematics
 Create modular and reusable code components
 Provide clear visualizations for each algorithm
-
 
 Future Improvements (Ideas)
 
@@ -121,12 +125,14 @@ Here are some sample outputs from the implemented algorithms:
 
 | Original Image | Detected Corners |
 |----------------|------------------|
-| ![Original](data/square.jpg) | ![Harris](results/harris_corner_detection.png) |
+| ![Original](results/square.jpg) | ![Harris](results/harris_corner_detection.png) |
 
 ### Canny Edge Detection
 | Original Image | Detected Edges |
+
+
 |----------------|------------------|
-| ![Original](data/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
+| ![Original](results/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 
 
 ### Laplacian Pyramid
@@ -134,3 +140,5 @@ Here are some sample outputs from the implemented algorithms:
 
 ### Character Detection
 ![Object Detection Result](results/character_detection_result.png)
+
+> *All results are generated directly from the `run.py` script or individual demo files.*
