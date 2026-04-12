@@ -9,4 +9,7 @@ def run_harris():
     image=image.astype(np.float32)/255.0
     output=harris.harris_corner_detection(image)
     plt.imshow(output, cmap='gray')
+    plt.savefig("results/harris_corner_detection.png")
     plt.show()
+    
+run_harris()

@@ -5,14 +5,14 @@ def run_pyramid():
     import cv2 as cv
     from . import laplacian_pyramid
 
-    # --- Load image ---
-    image = cv.imread('data/lena_color.jpg', cv.IMREAD_GRAYSCALE)
+    # Load image 
+    image = cv.imread('data/lena.jpg', cv.IMREAD_GRAYSCALE)
     image = image.astype(np.float32) / 255.0
 
     # --- Build Laplacian Pyramid ---
     d, u, l = laplacian_pyramid.laplacian_pyramid(image)
 
-    # --- Prepare canvases for visualization ---
+    # Prepare canvases for visualization 
     total_width = sum(img.shape[1] for img in d)
     max_height = d[0].shape[0]
 
@@ -33,7 +33,7 @@ def run_pyramid():
         canvas_laplacian[0:h, x_offset:x_offset+w] = np.abs(img)
         x_offset += w
 
-    # --- Display all three outputs in a single figure ---
+    # Display all three outputs in a single figure
     plt.figure(figsize=(12, 18))
 
     # 1. Gaussian Pyramid
@@ -55,4 +55,7 @@ def run_pyramid():
     plt.axis('off')
 
     plt.tight_layout()
+    plt.savefig("results/laplacian_pyramid.png")
     plt.show()
+
+run_pyramid()

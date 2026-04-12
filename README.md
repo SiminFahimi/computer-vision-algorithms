@@ -83,22 +83,27 @@ pip install numpy matplotlib opencv-python
 
 ## How to Run
 Using the central runner:
-Bash# Harris Corner Detection
-python run.py --method harris
+Bash
+
+# Harris Corner Detection
+```bash
+python -m harris_corner.demo
+```
 
 # Canny Edge Detection
-python run.py --method canny
+```bash
+python -m canny_edge.demo
+```
 
 # Laplacian Pyramid
-python run.py --method pyramid
+```bash
+python -m laplacian_pyramid.demo
+```
 
 # Character Detection
-python run.py --method detect
-Running individual demos:
-Bashpython -m harris_corner.demo
-python -m canny_edge.demo
-python -m laplacian_pyramid.demo
+```bash
 python -m character_detection.demo
+```
 
 
 Goals of the Project
