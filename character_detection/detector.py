@@ -56,8 +56,6 @@ def knee_threshold(score_map):
     return threshold
 
 
-
-
 def detect(img, template, weight_mask, stride=1):
     img = np.array(img, dtype=np.float32)
     template = np.array(template, dtype=np.float32)
@@ -82,12 +80,7 @@ def detect(img, template, weight_mask, stride=1):
             scores[y, x] = score
 
     threshold=knee_threshold(scores)
-    print(threshold)
     
-    max_score = np.max(scores)
-    print(max_score)
-    # threshold = 0.92* max_score
-
     ys, xs = np.where(scores >= max(threshold, 0.8))
 
     coordinates = [(int(y*stride), int(x*stride), scores[y, x]) for y, x in zip(ys, xs)]

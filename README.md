@@ -1,6 +1,10 @@
 # Computer Vision Algorithms (From Scratch)
 
-A collection of classic computer vision algorithms implemented **from scratch in Python** using only NumPy and basic OpenCV for image I/O and visualization. The main goal of this project is to deeply understand the mathematical foundations and implementation details of fundamental CV techniques.
+Note: This project was built purely as a personal exercise to better understand and gain intuition about classical computer vision algorithms. It is not intended as a production-level system.
+
+A collection of classic computer vision algorithms implemented **from scratch in Python** using only NumPy and basic OpenCV for image I/O and visualization.
+
+The goal of this project is to deeply understand the mathematical foundations behind fundamental computer vision techniques by implementing them without relying on high-level OpenCV functions.
 
 ---
 
@@ -9,25 +13,29 @@ A collection of classic computer vision algorithms implemented **from scratch in
 ### 1. Harris Corner Detection
 Detects interest points (corners) using the Harris response function.
 
-**Features:**
+**Key Features:**
 - Sobel gradient computation
 - Gaussian smoothing of structure tensor components
-- Harris corner response calculation
+- Harris response calculation
 - Non-maximum suppression
 
 **Module:** `harris_corner/`
 
+---
+
 ### 2. Canny Edge Detection
-A complete multi-stage edge detector.
+A complete multi-stage edge detection pipeline.
 
 **Pipeline:**
-1. Gaussian smoothing
-2. Gradient computation using Sobel filters
-3. Non-maximum suppression
-4. Double thresholding
-5. Edge tracking by hysteresis
+1. Gaussian smoothing  
+2. Gradient computation (Sobel filters)  
+3. Non-maximum suppression  
+4. Double thresholding  
+5. Edge tracking by hysteresis  
 
 **Module:** `canny_edge/`
+
+---
 
 ### 3. Laplacian Pyramid
 Multi-scale image representation using Gaussian and Laplacian pyramids.
@@ -35,24 +43,29 @@ Multi-scale image representation using Gaussian and Laplacian pyramids.
 **Features:**
 - Gaussian pyramid construction
 - Laplacian pyramid computation
-- Image reconstruction from pyramid levels
-- Visualization of all pyramid levels
+- Image reconstruction
+- Visualization of pyramid levels
 
 **Module:** `laplacian_pyramid/`
 
-### 4. Character/Object Detection (Template Matching)
-Simple sliding-window template matching with optional edge-weighted scoring.
+---
+
+### 4. Character / Object Detection (Template Matching)
+Sliding-window based detection using template matching with optional edge-weighted scoring.
 
 **Features:**
 - Multi-scale detection support
-- Weighted Normalized Cross-Correlation (NCC) using Canny edge weights
-- Template combination from multiple samples
+- Weighted Normalized Cross-Correlation (NCC)
+- Edge-aware weighting using Canny detector
+- Template averaging from multiple samples
+- Non-Maximum Suppression (NMS)
 
 **Module:** `character_detection/`
 
 ---
 
 ## Project Structure
+
 ```
 computer-vision-algorithms/
 ├── run.py                          # Main runner script
@@ -108,19 +121,19 @@ python -m character_detection.demo
 
 Goals of the Project
 
-Implement classical computer vision algorithms without relying on high-level OpenCV functions (e.g., no cv2.Canny() or cv2.cornerHarris())
-Build a solid understanding of the underlying mathematics
-Create modular and reusable code components
-Provide clear visualizations for each algorithm
+Implement classical computer vision algorithms from scratch (no high-level OpenCV functions like cv2.Canny or cv2.cornerHarris)
+Understand the mathematical foundations behind each method
+Build modular and reusable code structure
+Visualize intermediate and final results clearly
 
 Future Improvements (Ideas)
 
-Add proper Non-Maximum Suppression + NMS for object detection
-Implement full HOG + SVM detector
-Add SIFT-like keypoint detection and descriptor
+Add full HOG + SVM-based object detection
+Improve Non-Maximum Suppression (NMS)
+Implement SIFT-like keypoint detection
+Optical flow implementation
 Image stitching / panorama creation
-Optical flow
-Real-time webcam demonstrations
+Real-time webcam demos
 
 ## Example Results
 
@@ -144,6 +157,6 @@ Here are some sample outputs from the implemented algorithms:
 ![Laplacian Pyramid - Gaussian & Laplacian Levels](results/laplacian_pyramid.png)
 
 ### Character Detection
-![Object Detection Result](results/character_detection_result.png)
-
-> *All results are generated directly from the `run.py` script or individual demo files.*
+![Detection of  character "a"](results/detection_result0.png)
+![Detection of character "b"](results/detection_result1.png)
+![Detection of character "c"](results/detection_result2.png)
