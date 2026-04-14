@@ -143,14 +143,14 @@ Here are some sample outputs from the implemented algorithms:
 
 | Original Image | Detected Corners |
 |----------------|------------------|
-| ![Original](results/square.jpg) | ![Harris](results/harris_corner_detection.png) |
+| ![Original](data/square.jpg) | ![Harris](results/harris_corner_detection.png) |
 
 ### Canny Edge Detection
 | Original Image | Detected Edges |
 
 
 |----------------|------------------|
-| ![Original](results/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
+| ![Original](data/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 
 
 ### Laplacian Pyramid
