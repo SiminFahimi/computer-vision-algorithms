@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from .detector import *
+from .ncc_detector import *
 
 def combine_templates(template_list):
     if not template_list:

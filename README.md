@@ -60,8 +60,21 @@ Sliding-window based detection using template matching with optional edge-weight
 - Template averaging from multiple samples
 - Non-Maximum Suppression (NMS)
 
-**Module:** `character_detection/`
+**Module:** `template_matching_ncc/`
 
+### 5. Object Detection (HOG + Cosine Similarity)
+
+A more robust object detection pipeline using Histogram of Oriented Gradients (HOG) features with Cosine similarity-based classifier for decision making.
+
+**Key Features:**
+- HOG feature extraction from image patches
+- Sliding window detection
+- Cosine similarity-based classifier
+- More robust to shape variation compared to template matching (NCC)
+- Optional multi-scale detection
+- Non-Maximum Suppression (NMS)
+
+**Module:** `object_detection_hog/`
 ---
 
 ## Project Structure
@@ -80,8 +93,14 @@ computer-vision-algorithms/
 ├── laplacian_pyramid/
 │   ├── laplacian_pyramid.py
 │   └── demo.py
-├── character_detection/
-│   ├── detector.py
+├── template_matching_ncc/
+│   ├── ncc_detector.py
+│   └── demo.py
+├── object_detection_hog/
+│   ├── hog_descriptor.py        # feature extraction
+│   ├── hog_object_detector.py   # detection pipeline
+│   ├── classifier.py
+│   ├── utils.py
 │   └── demo.py
 ├── data/                           # Sample images (lena, square, test.png, characters, etc.)
 └── README.md
@@ -113,22 +132,35 @@ python -m canny_edge.demo
 python -m laplacian_pyramid.demo
 ```
 
-# Character Detection
+# Template Matching (NCC)
 ```bash
-python -m character_detection.demo
+python -m template_matching_ncc.demo
 ```
 
-
-Goals of the Project
+# Object Detection (HOG + Cosine Similarity)
+```bash
+python -m object_detection_hog.demo
+```
+## Goals of the Project
 
 Implement classical computer vision algorithms from scratch (no high-level OpenCV functions like cv2.Canny or cv2.cornerHarris)
 Understand the mathematical foundations behind each method
 Build modular and reusable code structure
 Visualize intermediate and final results clearly
 
-Future Improvements (Ideas)
+## Detection Pipeline Evolution
 
-Add full HOG + SVM-based object detection
+This project implements a progression of object detection methods:
+
+1. Template Matching (pixel-level similarity)
+2. HOG-based feature representation
+3. Cosine similarity-based classifier for decision making
+
+This demonstrates the transition from raw pixel comparison to feature-based representations.
+
+## Future Improvements (Ideas)
+
+Improve HOG-based object detection classifier (currently using cosine similarity)
 Improve Non-Maximum Suppression (NMS)
 Implement SIFT-like keypoint detection
 Optical flow implementation
@@ -147,16 +179,14 @@ Here are some sample outputs from the implemented algorithms:
 
 ### Canny Edge Detection
 | Original Image | Detected Edges |
-
-
-|----------------|------------------|
+|----------------|----------------|
 | ![Original](results/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 
 
 ### Laplacian Pyramid
 ![Laplacian Pyramid - Gaussian & Laplacian Levels](results/laplacian_pyramid.png)
 
-### Character Detection
+### NCC Template Matching
 ![Detection of  character "a"](results/detection_result0.png)
 ![Detection of character "b"](results/detection_result1.png)
 ![Detection of character "c"](results/detection_result2.png)
