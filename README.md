@@ -180,7 +180,6 @@ Here are some sample outputs from the implemented algorithms:
 ### Canny Edge Detection
 | Original Image | Detected Edges |
 |----------------|----------------|
-| ![Original](results/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 | ![Original](data/lena.jpg) | ![Canny Edge Detection](results/canny_edge_detection.png) |
 
 
